@@ -3,15 +3,11 @@ interface Film {
   title: string;
   director: string;
   duration: number;
+  budget?: number;
+  description?: string;
+  imageUrl?: string;
 }
 
 
-interface FilmToUpdate {
-  title?: string;
-  director?: string;
-  duration?: number;
-}
 
-type NewFilm = Omit<Film, "id">;
-
-export type { Film, NewFilm, FilmToUpdate };
+export type { Film };

@@ -1,23 +1,23 @@
 ######### NORMAL OPERATION  ###########
 
-### Read all pizzas
-GET http://localhost:3000/pizzas
+### Read all films
+GET http://localhost:3000/films
 
-### Read all pizzas with File variable
+### Read all films with File variable
 @baseUrl = http://localhost:3000
-GET {{baseUrl}}/pizzas
+GET {{baseUrl}}/films
 
-### Read all pizzas sorted by title (ascending)
-GET {{baseUrl}}/pizzas/?order=+title
+### Read all films sorted by title (ascending)
+GET {{baseUrl}}/films/?order=+title
 
-### Read all pizzas sorted by title (descending)
-GET {{baseUrl}}/pizzas/?order=-title
+### Read all films sorted by title (descending)
+GET {{baseUrl}}/films/?order=-title
 
 ### Read pizza identified by 2
-GET {{baseUrl}}/pizzas/2
+GET {{baseUrl}}/films/2
 
 ### Create a pizza
-POST {{baseUrl}}/pizzas
+POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
@@ -26,10 +26,10 @@ Content-Type: application/json
 }
 
 ### Delete pizza identified by 2
-DELETE {{baseUrl}}/pizzas/2
+DELETE {{baseUrl}}/films/2
 
 ### Update the pizza identified by 6
-PATCH {{baseUrl}}/pizzas/6
+PATCH {{baseUrl}}/films/6
 Content-Type: application/json
 
 {
@@ -42,10 +42,10 @@ Content-Type: application/json
 ######### ERROR OPERATION  ###########
 
 ### Read pizza which does not exists
-GET {{baseUrl}}/pizzas/100
+GET {{baseUrl}}/films/100
 
 ### Create a pizza which lacks a property
-POST {{baseUrl}}/pizzas
+POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
@@ -53,7 +53,7 @@ Content-Type: application/json
 }
 
 ### Create a pizza without info for a property
-POST {{baseUrl}}/pizzas
+POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
@@ -62,7 +62,7 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not exist
-PATCH {{baseUrl}}/pizzas/200
+PATCH {{baseUrl}}/films/200
 Content-Type: application/json
 
 {
@@ -70,7 +70,7 @@ Content-Type: application/json
 }
 
 ### Update for a pizza which does not provide any info for a property
-PATCH {{baseUrl}}/pizzas/1
+PATCH {{baseUrl}}/films/1
 Content-Type: application/json
 
 {
