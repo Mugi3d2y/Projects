@@ -4,7 +4,6 @@ import { Film } from "../types";
 
 const router = Router();
 
-let compteur = 0;
 const defaultFilms: Film[] = [
   {
     id: 1,
@@ -59,23 +58,11 @@ const defaultFilms: Film[] = [
     description:
       "In a near future, a lonely writer develops an unlikely relationship with an operating system designed to meet his every need.",
     budget: 23,
-  }
+  },
 ];
-
-
-router.use((req, _res, next) =>{
-  compteur++;
-  console.log("GET counter : " + compteur);
-  req.body;
-  next();
-})
 
 router.get("/", (_req, res) => {
   return res.json(defaultFilms);
 });
-
-
-
-
 
 export default router;
