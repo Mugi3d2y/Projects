@@ -61,8 +61,13 @@ const defaultFilms: Film[] = [
   },
 ];
 
-router.get("/", (_req, res) => {
+router.get("/", (req, res) => {
+  if (req.query["minimum-duration"]) {
+    return res.json(defaultFilms);
+  }
   return res.json(defaultFilms);
 });
+
+
 
 export default router;
