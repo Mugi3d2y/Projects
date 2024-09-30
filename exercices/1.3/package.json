@@ -1,0 +1,28 @@
+{
+  "name": "basic-api-boilerplate",
+  "version": "1.0.0",
+  "author": "e-Baron",
+  "private": true,
+  "scripts": {
+    "tsc": "tsc",
+    "debug": "npm run dev",
+    "dev": "ts-node-dev bin/www",
+    "lint": "eslint --ext .ts .",
+    "start": "node build/bin/www"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.12",
+    "@types/express": "^4.17.21",
+    "@typescript-eslint/eslint-plugin": "^7.13.0",
+    "@typescript-eslint/parser": "^7.13.0",
+    "eslint": "^8.56.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "5.4.4"
+  },
+  "description": "- Si vous ne l'avez pas fait, vous pouvez cloner le repo associé au boilerplate pour initier votre application : `git clone https://github.com/e-vinci/basic-ts-api-boilerplate.git` ou `git clone https://github.com/e-vinci/basic-ts-api-boilerplate.git nom-de-votre-projet` pour créer votre projet nommé `nom-de-votre-projet`.\r - **package.json** est le fichier de configuration de votre projet. Veuillez le mettre à jour afin de :\r   - donnez un nom à votre projet & une description ;\r   - vous identifier comme auteur.\r - ⚡ Si vous avez cloné votre projet au sein d'un repo existant, Git ne traquera pas ce nouveau projet ; en effet, Git ne traque pas des projets Git dans des projets Git.\r   Pour vous assurer que Git traque votre nouveau projet imbriqué dans un repo, vous devez effacer le répertoire **.git** se trouvant dans votre nouveau projet. N'hésitez pas aussi à effacer **.gitignore** se trouvant dans votre nouveau projet.\r - Par contre, si vous souhaitez créer un nouveau repo à l'aide de votre boilerplate,\r   vous pouvez utiliser le **.gitignore** existant. Vous pouvez aussi éventuellement utiliser le\r   **.git**, mais cela signifie que vous hériterez de tous les changements associés au boilerplate,\r   et que vous devrez changer l'origine (`git remote remove origin`, `git remote add origin LINK_TO_YOUR_REPO`). Nous vous recommandons plutôt d'effacer le répertoire **.git** et de\r   réinitialiser un projet git (`git init`, `git remote add origin LINK_TO_YOUR_REPO`).\r - Installation des dépendances et démarrage du boilerplate :",
+  "main": "index.js",
+  "license": "ISC"
+}
