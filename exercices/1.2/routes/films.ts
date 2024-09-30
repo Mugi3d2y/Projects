@@ -37,9 +37,6 @@ router.get("/", (_req, res) => {
   return res.json(defaultFilms);
 });
 
-router.get("/films",(_req, res) => {
-  return res.json(defaultFilms);  
-})
 
 
 
