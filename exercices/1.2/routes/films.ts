@@ -4,7 +4,7 @@ import { Film } from "../types";
 
 const router = Router();
 
-
+let compteur = 0;
 const defaultFilms: Film[] = [
   {
     id: 1,
@@ -26,13 +26,21 @@ const defaultFilms: Film[] = [
   }
 ];
 
-/* Read all the pizzas from the menu
-   GET /pizzas?order=title : ascending order by title
-   GET /pizzas?order=-title : descending order by title
-*/
+
+router.use((_req, _res, next) =>{
+  compteur++;
+  console.log("GET counter : " + compteur);
+  next();
+})
+
 router.get("/", (_req, res) => {
   return res.json(defaultFilms);
 });
+
+router.get("/films",(_req, res) => {
+  return res.json(defaultFilms);  
+})
+
 
 
 
