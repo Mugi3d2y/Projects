@@ -62,11 +62,19 @@ const defaultFilms: Film[] = [
 ];
 
 router.get("/", (req, res) => {
+  console.log(req.query);
   if (req.query["minimum-duration"]) {
-    return res.json(defaultFilms);
+    const newFilms: Film[] = [];
+    defaultFilms.forEach(element => {
+      if(element.duration>=0){
+        newFilms.push(element);
+      }
+    });
+    return res.json(newFilms);
   }
   return res.json(defaultFilms);
 });
+
 
 
 

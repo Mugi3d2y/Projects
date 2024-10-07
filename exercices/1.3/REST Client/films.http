@@ -3,3 +3,6 @@
 ### Read all films
 GET http://localhost:3000/films
 
+
+### Read all films with minimum duration
+GET http://localhost:3000/films/135
