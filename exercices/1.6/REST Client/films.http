@@ -1,0 +1,15 @@
+######### NORMAL OPERATION  ###########
+
+
+
+### Read all films
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films
+
+
+### Read all films with minimum duration
+GET {{baseUrl}}/films?minimum-duration=135
+
+
+### Delete a film by id
+DELETE {{baseUrl}}/films/1
