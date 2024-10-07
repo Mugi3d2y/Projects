@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { Film } from "../types";
+import { Film, NewFilm } from "../types";
 
 const router = Router();
 
@@ -61,19 +61,74 @@ const defaultFilms: Film[] = [
   },
 ];
 
+
+//Read all films, filtered by minimum-duration if the query param exists
 router.get("/", (req, res) => {
-  console.log(req.query);
-  if (req.query["minimum-duration"]) {
-    const newFilms: Film[] = [];
-    defaultFilms.forEach(element => {
-      if(element.duration>=0){
-        newFilms.push(element);
-      }
-    });
-    return res.json(newFilms);
+  if (req.query["minimum-duration"]===undefined) {
+    return res.send(defaultFilms);
   }
-  return res.json(defaultFilms);
+
+  const duration = Number(req.query["minimum-duration"]);
+  if(isNaN(duration)){
+    return res.json("Wrong minimum duration");
+  }
+
+  const filteredFilms = defaultFilms.filter(film => film.duration >= duration);
+
+  return res.send(filteredFilms);
 });
+
+// Read film by id
+router.get("/:id",(req, res) => {
+  const id = Number(req.params.id);
+
+  if(isNaN(id)){
+    res.json("Wrong id !")
+  }
+
+  
+  const film = defaultFilms.find(film => film.id === id);
+
+  if(film===undefined){
+    res.json("Film doesn't exist !")
+  }
+  res.send(film);
+});
+
+
+router.post("/", (req, res) =>{
+  const body : unknown = req.body;
+  if(
+    !body ||
+    typeof body !== "object" ||
+    !("id" in body) ||
+    !("title" in body) ||
+    !("director" in body) ||
+    !("duration" in body) ||
+    typeof body.id !== "number" ||
+    typeof body.title !== "string" ||
+    typeof body.director !== "string" ||  
+    typeof body.duration !== "number" ||
+    !body.title.trim() ||
+    !body.director.trim() ||
+    (("budget" in body) && (typeof body.budget !== "number" || body.budget <= 0)) ||
+    (("description" in body) && (typeof body.description !== "string" || !body.description.trim())) ||
+    (("duration" in body) && (typeof body.duration !== "number" || body.duration <= 0))
+  ){
+    res.json("Wrong body format");
+  }
+
+  const newFilm = body as NewFilm;
+
+  const nextId = defaultFilms.reduce((acc, film) => (film.id > acc ? film.id : acc), 0) + 1;
+
+  const addedFilm: Film = {id: nextId, ...newFilm};
+
+  defaultFilms.push(addedFilm);
+
+  return res.json(addedFilm); 
+});
+
 
 
 
